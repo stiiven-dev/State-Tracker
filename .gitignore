@@ -1,0 +1,65 @@
+# ========================
+# General
+# ========================
+.DS_Store
+Thumbs.db
+*.log
+
+# ========================
+# Build / Binary Files
+# ========================
+build/
+bin/
+*.o
+*.elf
+*.bin
+*.hex
+*.map
+
+# ========================
+# ESP-IDF / ESP32
+# ========================
+sdkconfig
+sdkconfig.old
+build/
+*.pyc
+__pycache__/
+.env
+
+# ========================
+# Arduino / PlatformIO
+# ========================
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# ========================
+# IDE Files
+# ========================
+.vscode/
+.idea/
+*.code-workspace
+
+# ========================
+# KiCad Temporary Files
+# ========================
+*.kicad_prl
+*.kicad_pro-bak
+*.kicad_sch-bak
+*-backups/
+*.bak
+*.tmp
+*.autosave
+
+# ========================
+# KiCad Generated Files
+# ========================
+*.step
+*.stp
+*.wrl
+
+# ========================
+# OS / Misc
+# ========================
+*.swp
+*.swo
