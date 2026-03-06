@@ -65,7 +65,7 @@ If a dangerous state is detected, the system triggers an alert that is sent to c
 
 ## Global System Architecture
 
-![System Architecture]("C:\Users\Soyah\Downloads\637513852_916140650824773_1666734247651862795_n (1).png")
+![System Architecture](system_architecture.png)
 
 ### Explanation
 
@@ -139,7 +139,7 @@ This allows quick response to emergencies.
 
 # 🔄 Data Flow
 
-![Data Flow Diagram]("C:\Users\Soyah\Downloads\636842034_1699176914385491_1403299990665495461_n.png")
+![Data Flow](data_flow.png)
 
 ### Explanation
 
