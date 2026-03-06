@@ -184,9 +184,7 @@ This allows quick response to emergencies.
 - Mobile communication
 - Signal processing
 
----
 
-# ⚙️ Installation
 
 Clone the repository:
 
