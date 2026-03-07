@@ -136,7 +136,7 @@ The sensors keep collecting data and the processing unit continues analyzing the
 
 When the system confirms a dangerous event such as:
 
--A fall
+- A fall
 - Abnormal physiological values
 - Unusual behaviour patterns
 
