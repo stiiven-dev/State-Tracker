@@ -69,71 +69,119 @@ If a dangerous state is detected, the system triggers an alert that is sent to c
 
 ### Explanation
 
-1. **Sensors Subsystem**
+1. **Power System**
 
-The wearable device uses sensors to collect user data:
+The Power System provides the electrical energy required for the entire device.
 
-- Accelerometer
-- Gyroscope
-- Physiological sensors
+It includes:
 
-These sensors capture movement and biometric signals.
+-Battery supply
+-Power management circuitry
 
----
-
-2. **Embedded Processing Unit**
-
-The microcontroller processes the sensor data through:
-
-- Data acquisition
-- Signal processing
-- Feature extraction
-
-This step prepares the data for analysis.
+This subsystem ensures that all hardware components operate reliably and efficiently while maintaining low power consumption for wearable usage.
 
 ---
 
-3. **Detection & Decision Unit**
+2. **Sensors Subsystem**
 
-The system analyzes the processed data to detect:
+The Sensors Subsystem is responsible for collecting real-time physical and physiological data from the user.
 
-- Falls
-- Abnormal behaviour
-- Dangerous thresholds
+The system integrates several sensors:
 
-If the system detects a problem, it triggers an alert.
+-Accelerometer → detects movement and sudden impacts
+-Gyroscope → measures orientation and body rotation
+-Physiological Sensors → monitor biometric signals such as heart rate and oxygen levels
 
----
-
-4. **Communication Module**
-
-Once a danger is detected, the system sends notifications through:
-
-- Bluetooth
-- GSM
-- WiFi
+These sensors provide the raw data required to monitor the user’s state.
 
 ---
 
-5. **Mobile Application**
+3. **Embedded Processing Unit**
 
-The mobile application allows users to:
+The Embedded Processing Unit acts as the core controller of the system.
 
-- Visualize alerts
-- Monitor the user's state
-- View event history
-- Synchronize with cloud services
+Its main responsibilities include:
+
+-Data acquisition from sensors
+-Signal processing to interpret sensor data
+-Feature extraction to identify relevant patterns
+
+This processing stage prepares the data for the detection algorithms.
 
 ---
 
-6. **Caregiver Notification**
+4. **Detection & Decision Unit**
 
-Caregivers receive alerts through:
+This module analyzes the processed data to determine whether the user is in a safe or dangerous condition.
 
-- Push notifications
-- SMS messages
+The system performs:
 
-This allows quick response to emergencies.
+-Fall detection logic
+-Abnormal behaviour analysis
+-Threshold comparison
+
+Based on these analyses, the system determines whether the user is in a normal state or a dangerous situation.
+
+---
+
+5. **Normal State Monitoring**
+
+If the system detects normal activity, monitoring continues without any alert.
+
+The sensors keep collecting data and the processing unit continues analyzing the user’s movements and physiological signals.
+
+---
+
+6. **Dangerous Event Detection**
+
+When the system confirms a dangerous event such as:
+
+-A fall
+-Abnormal physiological values
+-Unusual behaviour patterns
+
+the alert mechanism is activated.
+
+---
+
+7. **Communication Module**
+
+The Communication Module transmits alerts and data to external systems.
+
+Supported communication technologies include:
+
+-Bluetooth
+-GSM
+-WiFi
+
+These technologies allow the system to send notifications even if the user is alone.  
+
+---
+
+8. **Mobile Application**
+
+The Mobile Application serves as the user interface for caregivers.
+
+It provides features such as:
+
+-Alert visualization
+-User monitoring dashboard
+-Event history tracking
+-Cloud synchronization
+
+This application allows caregivers to monitor the elderly user remotely.
+
+---
+
+9. **Mobile Application**
+
+When a dangerous event is detected, the system immediately sends a notification to caregivers.
+Alerts may be delivered via:
+
+-Push notifications
+-SMS messages
+
+This ensures a rapid response to emergencies and improves the safety of elderly individuals living alone.
 
 ---
 
