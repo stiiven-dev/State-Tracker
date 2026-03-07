@@ -75,8 +75,8 @@ The Power System provides the electrical energy required for the entire device.
 
 It includes:
 
--Battery supply
--Power management circuitry
+- Battery supply
+- Power management circuitry
 
 This subsystem ensures that all hardware components operate reliably and efficiently while maintaining low power consumption for wearable usage.
 
@@ -88,9 +88,9 @@ The Sensors Subsystem is responsible for collecting real-time physical and physi
 
 The system integrates several sensors:
 
--Accelerometer → detects movement and sudden impacts
--Gyroscope → measures orientation and body rotation
--Physiological Sensors → monitor biometric signals such as heart rate and oxygen levels
+- Accelerometer → detects movement and sudden impacts
+- Gyroscope → measures orientation and body rotation
+- Physiological Sensors → monitor biometric signals such as heart rate and oxygen levels
 
 These sensors provide the raw data required to monitor the user’s state.
 
@@ -102,9 +102,9 @@ The Embedded Processing Unit acts as the core controller of the system.
 
 Its main responsibilities include:
 
--Data acquisition from sensors
--Signal processing to interpret sensor data
--Feature extraction to identify relevant patterns
+- Data acquisition from sensors
+- Signal processing to interpret sensor data
+- Feature extraction to identify relevant patterns
 
 This processing stage prepares the data for the detection algorithms.
 
@@ -116,9 +116,9 @@ This module analyzes the processed data to determine whether the user is in a sa
 
 The system performs:
 
--Fall detection logic
--Abnormal behaviour analysis
--Threshold comparison
+- Fall detection logic
+- Abnormal behaviour analysis
+- Threshold comparison
 
 Based on these analyses, the system determines whether the user is in a normal state or a dangerous situation.
 
@@ -137,8 +137,8 @@ The sensors keep collecting data and the processing unit continues analyzing the
 When the system confirms a dangerous event such as:
 
 -A fall
--Abnormal physiological values
--Unusual behaviour patterns
+- Abnormal physiological values
+- Unusual behaviour patterns
 
 the alert mechanism is activated.
 
@@ -150,9 +150,9 @@ The Communication Module transmits alerts and data to external systems.
 
 Supported communication technologies include:
 
--Bluetooth
--GSM
--WiFi
+- Bluetooth
+- GSM
+- WiFi
 
 These technologies allow the system to send notifications even if the user is alone.  
 
@@ -164,10 +164,10 @@ The Mobile Application serves as the user interface for caregivers.
 
 It provides features such as:
 
--Alert visualization
--User monitoring dashboard
--Event history tracking
--Cloud synchronization
+- Alert visualization
+- User monitoring dashboard
+- Event history tracking
+- Cloud synchronization
 
 This application allows caregivers to monitor the elderly user remotely.
 
@@ -178,8 +178,8 @@ This application allows caregivers to monitor the elderly user remotely.
 When a dangerous event is detected, the system immediately sends a notification to caregivers.
 Alerts may be delivered via:
 
--Push notifications
--SMS messages
+- Push notifications
+- SMS messages
 
 This ensures a rapid response to emergencies and improves the safety of elderly individuals living alone.
 
