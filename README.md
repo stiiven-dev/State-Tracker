@@ -65,7 +65,7 @@ If a dangerous state is detected, the system triggers an alert that is sent to c
 
 ## Global System Architecture
 
-![System Architecture](system_architecture.png)
+![System Architecture](system-architecture.png)
 
 ### Explanation
 
