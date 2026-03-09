@@ -65,7 +65,7 @@ If a dangerous state is detected, the system triggers an alert that is sent to c
 
 ## Global System Architecture
 
-![System Architecture](system-architecture.png)
+![System Architecture](./docs/system-architecture.png)
 
 ### Explanation
 
@@ -187,7 +187,7 @@ This ensures a rapid response to emergencies and improves the safety of elderly 
 
 # 🔄 Data Flow
 
-![Data Flow](data_flow.png)
+![Data Flow](./docs/data_flow.png)
 
 ### Explanation
 
