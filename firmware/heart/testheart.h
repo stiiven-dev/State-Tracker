@@ -3,9 +3,9 @@
 
 #include <Arduino.h>
 #include <Wire.h>
-#include "MAX30105.h"
-#include "heartRate.h"
-#include "spo2_algorithm.h"
+#include "lib/MAX30105.h"
+#include "lib/heartRate.h"
+#include "lib/spo2_algorithm.h"
 
 // =========================
 // Global sensor object
