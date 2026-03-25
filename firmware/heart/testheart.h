@@ -62,13 +62,12 @@ bool heartBufferReady = false;
 // =========================
 // Function declarations
 // =========================
-bool heart_begin(TwoWire &wirePort = Wire);
-void heart_update(bool isOnline);
-void heart_store_sample(uint32_t red, uint32_t ir);
-void heart_detect_rate(long irValue);
-void heart_compute_spo2();
-void heart_handle_logic(bool isOnline);
-void heart_send_to_cloud(int hr, int spo2);
+bool heart_begin(TwoWire &wirePort = Wire); // Initialize the sensor
+void heart_update(bool isOnline, int &HrOut, int &SpO2Out, bool &dataReady); // Call this in your main loop, pass true if connected to cloud, false for local alerts
+void heart_store_sample(uint32_t red, uint32_t ir); // Store samples in circular buffer for SpO2 calculation
+void heart_detect_rate(long irValue); // Beat detection algorithm for faster heart rate calculation
+void heart_compute_spo2(); // SpO2 calculation algorithm and overrides heartRate if valid (stable and precise calculation but slower)
+void heart_handle_logic(bool isOnline, int &hrOut, int &spo2Out, bool &dataReady); // Handle alerting and cloud readiness logic
 void heart_alert(String message);
 void heart_reset_buffers();
 
@@ -115,18 +114,19 @@ bool heart_begin(TwoWire &wirePort) {
     return true;
 }
 
-void heart_update(bool isOnline) {
+void heart_update(bool isOnline, int &HrOut, int &SpO2Out, bool &dataReady) {
     heartSensor.check();
-
-    while (heartSensor.available()) {
+    dataReady = false;
+    
+    while (heartSensor.available()) { 
+        
         lastIR = heartSensor.getIR();
         lastRed = heartSensor.getRed();
 
         fingerDetected = (lastIR > FINGER_THRESHOLD);
-
         if (fingerDetected) {
-            heart_detect_rate(lastIR);
-            heart_store_sample(lastRed, lastIR);
+            heart_detect_rate(lastIR); // Fast heart rate detection using beat detection algorithm
+            heart_store_sample(lastRed, lastIR); // Store samples for SpO2 calculation
         } else {
             currentHeartRate = -1;
             currentSpO2 = -1;
@@ -139,10 +139,10 @@ void heart_update(bool isOnline) {
 
     if (millis() - lastHeartComputeTime >= 1000) {
         lastHeartComputeTime = millis();
-
+        // Only compute SpO2 (once per second) and handle logic if finger is detected
         if (fingerDetected) {
             heart_compute_spo2();
-            heart_handle_logic(isOnline);
+            heart_handle_logic(isOnline, HrOut, SpO2Out, dataReady);
         } else {
             heart_alert("No finger detected");
         }
@@ -172,7 +172,7 @@ void heart_detect_rate(long irValue) {
             rates[rateSpot] = (byte)bpm;
             rateSpot++;
             rateSpot %= 4;
-
+            //moving 4 points average to smooth out the BPM value
             int sum = 0;
             for (int i = 0; i < 4; i++) {
                 sum += rates[i];
@@ -217,11 +217,19 @@ void heart_compute_spo2() {
     }
 }
 
-void heart_handle_logic(bool isOnline) {
+void heart_handle_logic(bool isOnline, int &hrOut, int &spo2Out, bool &dataReady) {
+    hrOut = -1;
+    spo2Out = -1;
+    dataReady = false;
+
     if (isOnline) {
-        if (millis() - lastHeartSendTime >= HEART_SEND_INTERVAL) {
+        if (millis() - lastHeartSendTime >= HEART_SEND_INTERVAL &&
+            heartRateValid && spo2Valid &&
+            currentHeartRate >= 0 && currentSpO2 >= 0) {
             lastHeartSendTime = millis();
-            heart_send_to_cloud(currentHeartRate, currentSpO2);
+            hrOut = currentHeartRate;
+            spo2Out = currentSpO2;
+            dataReady = true;
         }
     } else {
         if (spo2Valid && currentSpO2 < MIN_SPO2) {
@@ -236,20 +244,6 @@ void heart_handle_logic(bool isOnline) {
             heart_alert("Heart rate too high");
         }
     }
-}
-
-void heart_send_to_cloud(int hr, int spo2) {
-    if (hr < 0 || spo2 < 0) {
-        Serial.println("Invalid readings - skipping cloud send");
-        return;
-    }
-    Serial.println("Sending heart data to cloud...");
-    Serial.print("Heart Rate: ");
-    Serial.println(hr);
-    Serial.print("SpO2: ");
-    Serial.println(spo2);
-
-    // Put your HTTP or MQTT code here
 }
 
 void heart_alert(String message) {
