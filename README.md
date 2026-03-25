@@ -154,7 +154,7 @@ Supported communication technologies include:
 - GSM
 - WiFi
 
-These technologies allow the system to send notifications even if the user is alone.  
+These technologies allow the system to send notifications even if the user is alone.
 
 ---
 
@@ -214,13 +214,13 @@ This ensures a rapid response to emergencies and improves the safety of elderly 
 
 # 🔧 Hardware Components
 
-| Component | Purpose |
-|---------|---------|
-| **ESP32 S2** | Main microcontroller with wireless capabilities |
-| **MAX30102** | Heart rate and blood oxygen monitoring |
-| **MPU6050** | Motion tracking and fall detection |
-| **GSM Module** | Sending emergency messages |
-| **TVS Protection** | Static discharge protection |
+| Component          | Purpose                                         |
+| ------------------ | ----------------------------------------------- |
+| **ESP32 S3**       | Main microcontroller with wireless capabilities |
+| **MAX30102**       | Heart rate and blood oxygen monitoring          |
+| **MPU6050**        | Motion tracking and fall detection              |
+| **GSM Module**     | Sending emergency messages                      |
+| **TVS Protection** | Static discharge protection                     |
 
 ---
 
@@ -239,3 +239,4 @@ Clone the repository:
 ```bash
 git clone https://github.com/stiiven-dev/State-Tracker.git
 cd State-Tracker
+```
