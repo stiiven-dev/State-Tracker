@@ -12,13 +12,9 @@ The Store module is responsible for storing health and location data from the St
 
 ## Files
 - `store.h` - Header file containing function declarations
-- `store.cpp` - Implementation of the store functions (to be created)
 
 ## Function Reference
 
 ### storeData()
 Stores health data and location information to the SD card.
 
-**Signature:**
-```cpp
-void storeData(int heartRate, int spO2, float longitude, float latitude, String status);
