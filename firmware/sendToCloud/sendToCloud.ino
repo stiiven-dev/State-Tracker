@@ -70,5 +70,5 @@ void update() {
 void loop()
 {
   update()
-  delay(60000); //every 60seconds upldate
+  delay(90000); //every 60seconds upldate
 }
